@@ -1,0 +1,57 @@
+[package]
+name = "watchdiff-core"
+version = "0.1.0"
+edition = "2021"
+description = "Lightweight web/file/API/DB/SSL change monitoring with diffs, alerts and a CLI."
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = ["monitoring", "diff", "scraper", "webhook", "cli"]
+categories = ["command-line-utilities", "network-programming"]
+# repository = "https://github.com/<you>/watchdiff-rust"  # fill in once pushed
+rust-version = "1.88" # floor imposed by the `libxml` dependency (XPath support)
+
+[[bin]]
+name = "watchdiff"
+path = "src/bin/cli.rs"
+
+[lib]
+name = "watchdiff_core"
+path = "src/lib.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "cookies", "socks", "stream"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+chrono-tz = "0.10"
+cron = "0.15"
+rand = "0.8"
+sha2 = "0.10"
+regex = "1"
+similar = "2"
+scraper = "0.21"
+libxml = "0.3"
+chromiumoxide = "0.9"
+chromiumoxide_fetcher = "0.9"
+sqlx = { version = "0.8", default-features = false, features = ["postgres", "mysql", "runtime-tokio", "tls-rustls", "chrono", "rust_decimal"] }
+rust_decimal = "1"
+rust_xlsxwriter = "0.102"
+quick-xml = "0.37"
+rusqlite = { version = "0.32", features = ["bundled"] }
+axum = "0.7"
+csv = "1"
+url = "2"
+anyhow = "1"
+thiserror = "2"
+async-trait = "0.1"
+futures = "0.3"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rustls = "0.23"
+rustls-pemfile = "2"
+tokio-rustls = "0.26"
+webpki-roots = "0.26"
+x509-parser = "0.17"
+lettre = { version = "0.11", default-features = false, features = ["smtp-transport", "builder", "rustls-tls", "tokio1", "tokio1-rustls-tls"] }
